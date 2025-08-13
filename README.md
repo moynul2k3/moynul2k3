@@ -44,15 +44,15 @@ Let’s explore my GitHub and connect!
 
 ## 📂 Portfolio & Projects
 - 🌐 **Website:** [bikoallinone.com](https://bikoallinone.com)
-- 📜 **Portfolio:** [View Here](https://bikoallinone.com/portfolio)
-- 📄 **Resume:** [Download PDF](https://drive.google.com/file/d/YOUR_RESUME_LINK/view)
+- 📜 **Portfolio:** [View Here](https://moynul.com)
+- 📄 **Resume:** [Download PDF](https://drive.google.com/file/d/1CduojanybghWnTHREb41iz_7XKjMCXLc/view)
 
 ---
 
 ## 📫 How to Reach Me
-- **Email:** customerbiko@bikoallinone.com  
-- **LinkedIn:** [linkedin.com/in/moynul](https://linkedin.com/in/moynul)  
-- **ORCID:** [0000-0002-1825-0097](https://orcid.org/0000-0002-1825-0097)  
+- **Email:** moynul2k3@gmail.com 
+- **LinkedIn:** [linkedin.com/in/moynul](https://linkedin.com/in/moynul2k3)  
+- **ORCID:** [0000-0002-1825-0097](https://orcid.org/0009-0008-6680-1683)  
 
 ---
 
@@ -62,13 +62,13 @@ Let’s explore my GitHub and connect!
 ---
 
 ## 📊 GitHub Stats
-![Moynul's GitHub stats](https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=radical)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_USERNAME&layout=compact&theme=radical)
+![Moynul's GitHub stats](https://github-readme-stats.vercel.app/api?username=moynul2k3&show_icons=true&theme=radical)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=moynul2k3&layout=compact&theme=radical)
 
 ---
 
 ## 🔗 Connect With Me
-[![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?&style=flat&logo=facebook&logoColor=white)](https://facebook.com/YOUR_FACEBOOK)
-[![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?&style=flat&logo=twitter&logoColor=white)](https://twitter.com/YOUR_TWITTER)
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?&style=flat&logo=instagram&logoColor=white)](https://instagram.com/YOUR_INSTAGRAM)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?&style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/moynul)
+[![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?&style=flat&logo=facebook&logoColor=white)](https://facebook.com/Profile.moynul)
+## [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?&style=flat&logo=twitter&logoColor=white)](https://twitter.com/YOUR_TWITTER)
+## [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?&style=flat&logo=instagram&logoColor=white)](https://instagram.com/YOUR_INSTAGRAM)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?&style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/moynul2k3)
