@@ -69,6 +69,4 @@ Let’s explore my GitHub and connect!
 
 ## 🔗 Connect With Me
 [![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?&style=flat&logo=facebook&logoColor=white)](https://facebook.com/Profile.moynul)
-## [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?&style=flat&logo=twitter&logoColor=white)](https://twitter.com/YOUR_TWITTER)
-## [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?&style=flat&logo=instagram&logoColor=white)](https://instagram.com/YOUR_INSTAGRAM)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?&style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/moynul2k3)
