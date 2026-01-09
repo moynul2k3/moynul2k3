@@ -1,4 +1,8 @@
-<img src="https://i.ibb.co.com/6j6RjN4/Success-is-the-last-chapter-in-the-book-of-Hardworking.jpg" style="width:100%; max-width:100%;" />
+<div align="center">
+  <img src="https://i.ibb.co.com/6j6RjN4/Success-is-the-last-chapter-in-the-book-of-Hardworking.jpg" width="100%" />
+  <h1>Md. Moynul Islam</h1>
+  <p><strong>Full-Stack Web Developer | Next.js · Django · FastAPI</strong></p>
+</div>
 
 
 # 👋 Hi, I'm **Md. Moynul Islam**
