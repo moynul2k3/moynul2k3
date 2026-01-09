@@ -1,72 +1,88 @@
-# Hi there 👋, I'm Md. Moynul Islam
+![Success Banner](https://i.ibb.co.com/6j6RjN4/Success-is-the-last-chapter-in-the-book-of-Hardworking.jpg)
 
-🏆 **Full-Stack Web Developer** (Next.js | Django | FastAPI) from **Bangladesh**  
-Passionate about building high-performance, user-friendly, and secure web applications.
+# 👋 Hi, I'm **Md. Moynul Islam**
 
-I specialize in **Next.js, Django, FastAPI**, and modern web technologies.  
-I’ve completed several full-stack projects and I’m always eager to collaborate on innovative ideas.  
-Let’s explore my GitHub and connect!
+🚀 **Full-Stack Web Developer**  
+**Next.js | Django | FastAPI**  
+📍 Bangladesh
+
+I am a results-driven full-stack developer with hands-on experience in building **scalable, secure, and high-performance web applications**. I specialize in modern frontend frameworks and robust backend architectures, delivering clean code and production-ready solutions.
+
+I enjoy solving complex problems, optimizing APIs, and deploying applications in real-world environments. I’m always open to collaborating on innovative projects and learning new technologies.
 
 ---
 
-## 🚀 Skilled Languages & Tools
-![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/-JavaScript-F7E017?style=flat&logo=javascript&logoColor=black)
-![TypeScript](https://img.shields.io/badge/-TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
-![React](https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat&logo=next.js&logoColor=white)
-![Django](https://img.shields.io/badge/-Django-092E20?style=flat&logo=django&logoColor=white)
-![FastAPI](https://img.shields.io/badge/-FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
-![SQLite](https://img.shields.io/badge/-SQLite-003B57?style=flat&logo=sqlite&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white)
-![Git](https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white)
-![Nginx](https://img.shields.io/badge/-Nginx-009639?style=flat&logo=nginx&logoColor=white)
-![Linux](https://img.shields.io/badge/-Linux-FCC624?style=flat&logo=linux&logoColor=black)
+## 🛠️ Technical Skills
+
+### **Frontend**
+- HTML5, CSS3, JavaScript (ES6+)
+- TypeScript
+- React.js
+- Next.js (App Router, Server Actions, SSR)
+
+### **Backend**
+- Django & Django REST Framework
+- FastAPI (ASGI-based high-performance APIs)
+- Authentication (JWT, Cookies, OAuth-ready)
+- Background Tasks (Celery, Redis)
+
+### **Databases**
+- PostgreSQL
+- SQLite
+- Database Design & Optimization
+
+### **DevOps & Tools**
+- Git & GitHub
+- Docker & Docker Compose
+- Nginx & Gunicorn
+- Linux (Ubuntu, CentOS)
+- VPS Deployment & Server Configuration
 
 ---
 
 ## 🌱 Currently Learning
-- **TypeScript**
-- **Next.js 15 Advanced Features**
-- **Docker for Deployment**
-- **Redis & Celery for Background Tasks**
+- Advanced **TypeScript** patterns
+- **Next.js 15** performance & caching strategies
+- **Dockerized production deployments**
+- **Redis & Celery** for scalable background processing
 
 ---
 
-## 💬 Ask Me About
-- Web Development (Frontend + Backend)
-- API Design & Optimization
-- Server Deployment with Nginx & Gunicorn
-- FastAPI + Django ASGI Integration
+## 💡 Expertise & Interests
+- Full-Stack Web Application Development
+- RESTful & High-Performance API Design
+- Secure Authentication & Authorization
+- Django + FastAPI Hybrid Architectures
+- Production Deployment & Server Optimization
 
 ---
 
-## 📂 Portfolio & Projects
-- 🌐 **Website:** [bikoallinone.com](https://bikoallinone.com)
-- 📜 **Portfolio:** [View Here](https://moynul.com)
+## 📁 Portfolio & Work
+- 🌐 **Company Website:** [bikoallinone.com](https://bikoallinone.com)
+- 💼 **Personal Portfolio:** [moynul.com](https://moynul.com)
 - 📄 **Resume:** [Download PDF](https://drive.google.com/file/d/1CduojanybghWnTHREb41iz_7XKjMCXLc/view)
 
 ---
 
-## 📫 How to Reach Me
-- **Email:** moynul2k3@gmail.com 
-- **LinkedIn:** [linkedin.com/in/moynul](https://linkedin.com/in/moynul2k3)  
-- **ORCID:** [0000-0002-1825-0097](https://orcid.org/0009-0008-6680-1683)  
+## 📫 Contact Information
+- 📧 **Email:** moynul2k3@gmail.com  
+- 💼 **LinkedIn:** [linkedin.com/in/moynul2k3](https://linkedin.com/in/moynul2k3)  
+- 🆔 **ORCID:** [0009-0008-6680-1683](https://orcid.org/0009-0008-6680-1683)
 
 ---
 
 ## ⚡ Fun Fact
-☕ I’m a coffee addict and I debug better after my 2nd cup.
+☕ I believe good coffee and clean code solve most problems.
 
 ---
 
-## 📊 GitHub Stats
-![Moynul's GitHub stats](https://github-readme-stats.vercel.app/api?username=moynul2k3&show_icons=true&theme=radical)
+## 📊 GitHub Analytics
+
+![Moynul's GitHub Stats](https://github-readme-stats.vercel.app/api?username=moynul2k3&show_icons=true&theme=radical)
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=moynul2k3&layout=compact&theme=radical)
 
 ---
 
 ## 🔗 Connect With Me
-[![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?&style=flat&logo=facebook&logoColor=white)](https://facebook.com/Profile.moynul)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?&style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/moynul2k3)
+[![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=flat&logo=facebook&logoColor=white)](https://facebook.com/Profile.moynul)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/moynul2k3)
