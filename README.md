@@ -1,4 +1,5 @@
-![Success Banner](https://i.ibb.co.com/6j6RjN4/Success-is-the-last-chapter-in-the-book-of-Hardworking.jpg)
+<img src="https://i.ibb.co.com/6j6RjN4/Success-is-the-last-chapter-in-the-book-of-Hardworking.jpg" style="width:100%; max-width:100%;" />
+
 
 # 👋 Hi, I'm **Md. Moynul Islam**
 
