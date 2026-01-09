@@ -5,11 +5,6 @@
 </div>
 
 
-# 👋 Hi, I'm **Md. Moynul Islam**
-
-🚀 **Full-Stack Web Developer**  
-**Next.js | Django | FastAPI**  
-📍 Bangladesh
 
 I am a results-driven full-stack developer with hands-on experience in building **scalable, secure, and high-performance web applications**. I specialize in modern frontend frameworks and robust backend architectures, delivering clean code and production-ready solutions.
 
