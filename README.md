@@ -1,6 +1,15 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Hello%2C%20World%20%F0%9F%91%8B&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=38" alt="Header" width="100%" />
+<!-- Animated neofetch-style profile card -->
+<a href="https://github.com/moynul2k3">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/moynul2k3/moynul2k3/main/assets/dark_mode.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/moynul2k3/moynul2k3/main/assets/light_mode.svg">
+    <img alt="Md. Moynul Islam - GitHub profile card" src="https://raw.githubusercontent.com/moynul2k3/moynul2k3/main/assets/dark_mode.svg" width="100%">
+  </picture>
+</a>
+
+<br /><br />
 
 <a href="https://github.com/moynul2k3">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&width=720&height=50&lines=Full-Stack+Web+Developer;Next.js+%C2%B7+Django+%C2%B7+FastAPI;Building+scalable+%26+secure+web+apps;Turning+coffee+into+clean+code+%E2%98%95" alt="Typing animation" />
@@ -15,19 +24,6 @@
 
 <img src="https://komarev.com/ghpvc/?username=moynul2k3&label=Profile+Views&color=7C3AED&style=flat-square" alt="Profile views" />
 
-</div>
-
-<br />
-
-<!-- Animated neofetch-style profile card -->
-<div align="center">
-  <a href="https://github.com/moynul2k3">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/moynul2k3/moynul2k3/main/assets/dark_mode.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/moynul2k3/moynul2k3/main/assets/light_mode.svg">
-      <img alt="Md. Moynul Islam - GitHub profile card" src="https://raw.githubusercontent.com/moynul2k3/moynul2k3/main/assets/dark_mode.svg" width="100%">
-    </picture>
-  </a>
 </div>
 
 <br />
