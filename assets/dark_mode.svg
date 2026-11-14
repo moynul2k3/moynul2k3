@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="512" viewBox="0 0 960 512" role="img" aria-label="Md. Moynul Islam - GitHub profile card">
+<title>Md. Moynul Islam - GitHub profile card</title>
+<defs>
+  <style>
+.text { font: 12.5px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; }
+.ascii { font: 10px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; fill: #94a3b8; }
+.r { opacity: 0; animation: fadeIn 0.35s ease-out forwards; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+  <clipPath id="cardClip">
+    <rect x="0" y="0" width="960" height="512" rx="14" />
+  </clipPath>
+</defs>
+
+<rect x="0" y="0" width="960" height="512" rx="14" fill="#0f141c" stroke="#1e293b" stroke-width="1.5" />
+
+<g clip-path="url(#cardClip)">
+<text class="ascii r" x="26" y="68.4" xml:space="preserve" style="animation-delay:0.08s">                      .-+***-</text>
+<text class="ascii r" x="26" y="82.6" xml:space="preserve" style="animation-delay:0.10s">                    :*%@@@@@@*-:</text>
+<text class="ascii r" x="26" y="96.8" xml:space="preserve" style="animation-delay:0.11s">                  :*@@@@@@@@%%#=</text>
+<text class="ascii r" x="26" y="111.0" xml:space="preserve" style="animation-delay:0.12s">                 -%@@%#####%@@@%*</text>
+<text class="ascii r" x="26" y="125.2" xml:space="preserve" style="animation-delay:0.14s">                -%%#*+====--+%@%@+</text>
+<text class="ascii r" x="26" y="139.4" xml:space="preserve" style="animation-delay:0.15s">               .#%#.-----:::-=#%%#</text>
+<text class="ascii r" x="26" y="153.6" xml:space="preserve" style="animation-delay:0.17s">               -@%+ :-::::..:.=%@*</text>
+<text class="ascii r" x="26" y="167.8" xml:space="preserve" style="animation-delay:0.18s">               -@@+-+*+-.:-==--@%+</text>
+<text class="ascii r" x="26" y="182.0" xml:space="preserve" style="animation-delay:0.20s">               .%%+*#**==+***+=#@=</text>
+<text class="ascii r" x="26" y="196.2" xml:space="preserve" style="animation-delay:0.21s">               :%+-+++=+-=-==++#%</text>
+<text class="ascii r" x="26" y="210.4" xml:space="preserve" style="animation-delay:0.23s">               -#- ---==:-=:::-#=</text>
+<text class="ascii r" x="26" y="224.6" xml:space="preserve" style="animation-delay:0.24s">               -*::-=++=--==-.-+:</text>
+<text class="ascii r" x="26" y="238.8" xml:space="preserve" style="animation-delay:0.26s">                =-=*#++*+==-*-=*.</text>
+<text class="ascii r" x="26" y="253.0" xml:space="preserve" style="animation-delay:0.27s">                 :=+#+-:::=*+==-</text>
+<text class="ascii r" x="26" y="267.2" xml:space="preserve" style="animation-delay:0.29s">                  =+====---===.</text>
+<text class="ascii r" x="26" y="281.4" xml:space="preserve" style="animation-delay:0.30s">                  =*=--==-:=+-</text>
+<text class="ascii r" x="26" y="295.6" xml:space="preserve" style="animation-delay:0.32s">                  =%%**+==+%*.</text>
+<text class="ascii r" x="26" y="309.8" xml:space="preserve" style="animation-delay:0.33s">                 .-+#@@@@@%*=.</text>
+<text class="ascii r" x="26" y="324.0" xml:space="preserve" style="animation-delay:0.35s">                ---==+**+==--=:</text>
+<text class="ascii r" x="26" y="338.2" xml:space="preserve" style="animation-delay:0.36s">             .:+#.=-====----=-@+:.</text>
+<text class="ascii r" x="26" y="352.4" xml:space="preserve" style="animation-delay:0.38s">        .:=*#%%%# ==--=----+.=@@@%#*+-:</text>
+<text class="ascii r" x="26" y="366.6" xml:space="preserve" style="animation-delay:0.39s">    :=*%%@@@@%#%%  +------+: *@%%@@@@@@%#*-.</text>
+<text class="ascii r" x="26" y="380.8" xml:space="preserve" style="animation-delay:0.41s">  :%@@@@@%%%%%%@%:..=-::-=: .+@%@%%%%%%@@@@%.</text>
+<text class="ascii r" x="26" y="395.0" xml:space="preserve" style="animation-delay:0.42s">  #@%%%%%@@@@@@@@:.  :--:    *@%@@@@@@@%%%%@*</text>
+<text class="ascii r" x="26" y="409.2" xml:space="preserve" style="animation-delay:0.44s"> :%%%@@@@@@@@@@%@:    ..     *@%@@@@@@@@@@%%%.</text>
+<text class="ascii r" x="26" y="423.4" xml:space="preserve" style="animation-delay:0.45s"> +@%@@@@@@@@@@@%@:           #@%@@@@@@@@@@@%@+</text>
+<text class="ascii r" x="26" y="437.6" xml:space="preserve" style="animation-delay:0.47s">:%%@@@@@@@@@@@@%@-           #@%@@@@@@@@@@@@@%</text>
+<text class="ascii r" x="26" y="451.8" xml:space="preserve" style="animation-delay:0.48s">+%%@@@@@@@@@@@@%@=           %@%@@@@@@@@@@@@@@</text>
+<text class="ascii r" x="26" y="466.0" xml:space="preserve" style="animation-delay:0.50s">%%@@@@@@@@@@@@@%@+          .%@%@@@@@@@@@@@@@%</text>
+<text class="ascii r" x="26" y="480.2" xml:space="preserve" style="animation-delay:0.52s">@@@@@@@@@@@@@@@%@*          :@%@@@@@@@@@@@@@@@</text>
+<text class="r text" x="322.5" y="40" xml:space="preserve" style="animation-delay:0.12s"><tspan fill="#58a6ff" font-weight="600">moynul@quanta-plus-plus</tspan> <tspan fill="#334155">------------------------------------------------------</tspan></text>
+<text class="r text" x="322.5" y="59" xml:space="preserve" style="animation-delay:0.14s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">OS: </tspan><tspan fill="#334155">........................ </tspan><tspan fill="#e2e8f0">Linux (Ubuntu), Windows</tspan></text>
+<text class="r text" x="322.5" y="78" xml:space="preserve" style="animation-delay:0.16s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">Host: </tspan><tspan fill="#334155">...................... </tspan><tspan fill="#e2e8f0">Quanta Plus Plus</tspan></text>
+<text class="r text" x="322.5" y="97" xml:space="preserve" style="animation-delay:0.18s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">Kernel: </tspan><tspan fill="#334155">.................... </tspan><tspan fill="#e2e8f0">Full-Stack Web Developer</tspan></text>
+<text class="r text" x="322.5" y="116" xml:space="preserve" style="animation-delay:0.20s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">Uptime: </tspan><tspan fill="#334155">.................... </tspan><tspan fill="#e2e8f0">4+ years active development</tspan></text>
+<text class="r text" x="322.5" y="135" xml:space="preserve" style="animation-delay:0.22s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">IDE: </tspan><tspan fill="#334155">....................... </tspan><tspan fill="#e2e8f0">VS Code, PyCharm</tspan></text>
+<text class="r text" x="322.5" y="173" xml:space="preserve" style="animation-delay:0.26s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">Languages.Programming: </tspan><tspan fill="#334155">..... </tspan><tspan fill="#e2e8f0">TypeScript, Python, JavaScript</tspan></text>
+<text class="r text" x="322.5" y="192" xml:space="preserve" style="animation-delay:0.28s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">Languages.Frameworks: </tspan><tspan fill="#334155">...... </tspan><tspan fill="#e2e8f0">Next.js, Django, FastAPI, React</tspan></text>
+<text class="r text" x="322.5" y="211" xml:space="preserve" style="animation-delay:0.30s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">Languages.Real: </tspan><tspan fill="#334155">............ </tspan><tspan fill="#e2e8f0">Bengali (Native), English (Fluent)</tspan></text>
+<text class="r text" x="322.5" y="249" xml:space="preserve" style="animation-delay:0.34s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">Stack.Databases: </tspan><tspan fill="#334155">........... </tspan><tspan fill="#e2e8f0">PostgreSQL, SQLite, Redis</tspan></text>
+<text class="r text" x="322.5" y="268" xml:space="preserve" style="animation-delay:0.36s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">Stack.DevOps: </tspan><tspan fill="#334155">.............. </tspan><tspan fill="#e2e8f0">Docker, Nginx, Linux, VPS</tspan></text>
+<text class="r text" x="322.5" y="306" xml:space="preserve" style="animation-delay:0.40s"><tspan fill="#cbd5e1" font-weight="600">- Contact </tspan><tspan fill="#334155">--------------------------------------------------------------------</tspan></text>
+<text class="r text" x="322.5" y="325" xml:space="preserve" style="animation-delay:0.42s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">Email.Personal: </tspan><tspan fill="#334155">............ </tspan><tspan fill="#e2e8f0">moynul2k3@gmail.com</tspan></text>
+<text class="r text" x="322.5" y="344" xml:space="preserve" style="animation-delay:0.44s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">Email.Work: </tspan><tspan fill="#334155">................ </tspan><tspan fill="#e2e8f0">quantaplusplus@gmail.com</tspan></text>
+<text class="r text" x="322.5" y="363" xml:space="preserve" style="animation-delay:0.46s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">Website: </tspan><tspan fill="#334155">................... </tspan><tspan fill="#e2e8f0">moynul.com</tspan></text>
+<text class="r text" x="322.5" y="382" xml:space="preserve" style="animation-delay:0.48s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">LinkedIn: </tspan><tspan fill="#334155">.................. </tspan><tspan fill="#e2e8f0">linkedin.com/in/moynul2k3</tspan></text>
+<text class="r text" x="322.5" y="401" xml:space="preserve" style="animation-delay:0.50s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">GitHub: </tspan><tspan fill="#334155">.................... </tspan><tspan fill="#e2e8f0">github.com/moynul2k3</tspan></text>
+<text class="r text" x="322.5" y="439" xml:space="preserve" style="animation-delay:0.54s"><tspan fill="#cbd5e1" font-weight="600">- GitHub Stats </tspan><tspan fill="#334155">---------------------------------------------------------------</tspan></text>
+<text class="r text" x="322.5" y="458" xml:space="preserve" style="animation-delay:0.56s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">Repos: </tspan><tspan fill="#334155">............. </tspan><tspan fill="#38bdf8" font-weight="600">56 </tspan><tspan fill="#475569">| </tspan><tspan fill="#f59e0b">Stars: </tspan><tspan fill="#334155">............ </tspan><tspan fill="#38bdf8" font-weight="600">1</tspan></text>
+<text class="r text" x="322.5" y="477" xml:space="preserve" style="animation-delay:0.58s"><tspan fill="#64748b">. </tspan><tspan fill="#f59e0b">Commits (1y): </tspan><tspan fill="#334155">..... </tspan><tspan fill="#38bdf8" font-weight="600">536 </tspan><tspan fill="#475569">| </tspan><tspan fill="#f59e0b">Followers: </tspan><tspan fill="#334155">........ </tspan><tspan fill="#38bdf8" font-weight="600">5</tspan></text>
+</g>
+</svg>

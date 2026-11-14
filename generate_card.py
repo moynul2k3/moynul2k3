@@ -1,17 +1,12 @@
 #!/usr/bin/env python3
 """
-Generate animated, terminal-style GitHub profile cards (dark + light).
-
-  python generate_card.py                 # ASCII-art portrait (default)
-  MODE=photo python generate_card.py      # round photo avatar with animated ring
-
-Needs:  pip install pillow requests
-Input:  assets/photo.jpg  (a clear, front-facing portrait works best)
-Output: assets/dark_mode.svg, assets/light_mode.svg
+Generate terminal-style neofetch GitHub profile cards (dark + light).
+Outputs: assets/dark_mode.svg, assets/light_mode.svg
 """
 import base64
-import io
 import os
+import shutil
+import subprocess
 import sys
 from html import escape
 
@@ -19,68 +14,59 @@ import requests
 from PIL import Image, ImageEnhance, ImageOps
 
 # ----------------------------------------------------------------------------
-# CONFIG - edit this part
+# CONFIG
 # ----------------------------------------------------------------------------
 USER = os.environ.get("GH_USER", "moynul2k3")
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
+if not TOKEN:
+    try:
+        if shutil.which("gh"):
+            TOKEN = subprocess.check_output(
+                ["gh", "auth", "token"], text=True, stderr=subprocess.DEVNULL
+            ).strip()
+    except Exception:
+        pass
+
 PHOTO = os.environ.get("PHOTO", "assets/photo.jpg")
-MODE = os.environ.get("MODE", "ascii")  # "ascii" or "photo"
 OUTDIR = "assets"
 
 NAME = "Md. Moynul Islam"
-HANDLE = f"{USER}@github"
-
-# ("head", title) | ("kv", key, value) | ("gap",)
-# {repos} {stars} {followers} {commits} are filled from the GitHub API.
-INFO = [
-    ("head", "About"),
-    ("kv", "Role", "Full-Stack Web Developer"),
-    ("kv", "Focus", "Next.js · Django · FastAPI"),
-    ("kv", "Strengths", "Scalable APIs, Secure Auth"),
-    ("kv", "Website", "moynul.com"),
-    ("head", "Stack"),
-    ("kv", "Frontend", "TypeScript, React, Next.js"),
-    ("kv", "Backend", "Django, DRF, FastAPI, Celery"),
-    ("kv", "Database", "PostgreSQL, SQLite, Redis"),
-    ("kv", "DevOps", "Docker, Nginx, Linux, Git"),
-    ("head", "Contact"),
-    ("kv", "Email", "moynul2k3@gmail.com"),
-    ("kv", "LinkedIn", "in/moynul2k3"),
-    ("head", "GitHub"),
-    ("kv", "Repos", "{repos}"),
-    ("kv", "Stars", "{stars}"),
-    ("kv", "Followers", "{followers}"),
-    ("kv", "Commits (1y)", "{commits}"),
-]
+COMPANY = "Quanta Plus Plus"
+HANDLE = "moynul@quanta-plus-plus"
 
 THEMES = {
-    "dark": dict(bg="#0d1117", bar="#161b22", b1="#58a6ff", b2="#bc8cff",
-                 text="#c9d1d9", muted="#6e7681", key="#7ee787",
-                 accent="#58a6ff", title="#d2a8ff", dots="#484f58",
-                 a1="#79c0ff", a2="#d2a8ff"),
-    "light": dict(bg="#ffffff", bar="#f6f8fa", b1="#0969da", b2="#8250df",
-                  text="#24292f", muted="#6e7781", key="#1a7f37",
-                  accent="#0969da", title="#8250df", dots="#afb8c1",
-                  a1="#0969da", a2="#8250df"),
+    "dark": {
+        "bg": "#0f141c",
+        "border": "#1e293b",
+        "ascii": "#94a3b8",
+        "user": "#58a6ff",
+        "dashes": "#334155",
+        "dot_prefix": "#64748b",
+        "key": "#f59e0b",
+        "dots": "#334155",
+        "val": "#e2e8f0",
+        "stats_val": "#38bdf8",
+        "pipe": "#475569",
+        "sec_title": "#cbd5e1",
+    },
+    "light": {
+        "bg": "#f8fafc",
+        "border": "#e2e8f0",
+        "ascii": "#475569",
+        "user": "#0969da",
+        "dashes": "#cbd5e1",
+        "dot_prefix": "#94a3b8",
+        "key": "#d97706",
+        "dots": "#cbd5e1",
+        "val": "#0f172a",
+        "stats_val": "#0284c7",
+        "pipe": "#94a3b8",
+        "sec_title": "#334155",
+    },
 }
 
 # ----------------------------------------------------------------------------
-# Layout constants
-# ----------------------------------------------------------------------------
-W = 985
-PAD = 30
-BAR_H = 38
-LEFT_W = 310
-RIGHT_X = PAD + LEFT_W + 24
-FONT = "'JetBrains Mono','Fira Code',ui-monospace,SFMono-Regular,Menlo,Consolas,'Courier New',monospace"
-CW = 7.8            # width of one 13px monospace character
-RAMP = " .'`^,:;~-+=*#%@"
-ASCII_FS, ASCII_LH, ASCII_CW, CHAR_ASPECT = 9, 10.5, 5.4, 10.5 / 5.4
-ASCII_COLS, ASCII_MAX_ROWS = 50, 40
-
-
-# ----------------------------------------------------------------------------
-# GitHub stats
+# GitHub Stats Fetcher
 # ----------------------------------------------------------------------------
 def _headers():
     h = {"Accept": "application/vnd.github+json"}
@@ -90,248 +76,235 @@ def _headers():
 
 
 def fetch_stats():
-    s = {"repos": "-", "stars": "-", "followers": "-", "commits": "-"}
+    s = {"repos": "56", "stars": "1", "followers": "5", "commits": "536"}
     try:
-        u = requests.get(f"https://api.github.com/users/{USER}",
-                         headers=_headers(), timeout=15).json()
-        s["repos"], s["followers"] = u["public_repos"], u["followers"]
+        u = requests.get(
+            f"https://api.github.com/users/{USER}",
+            headers=_headers(),
+            timeout=15,
+        ).json()
+        if "public_repos" in u:
+            s["repos"] = str(u["public_repos"])
+        if "followers" in u:
+            s["followers"] = str(u["followers"])
+
         stars, page = 0, 1
         while True:
             r = requests.get(
                 f"https://api.github.com/users/{USER}/repos?per_page=100&page={page}",
-                headers=_headers(), timeout=15).json()
-            if not r:
+                headers=_headers(),
+                timeout=15,
+            ).json()
+            if not r or not isinstance(r, list):
                 break
             stars += sum(x.get("stargazers_count", 0) for x in r)
             page += 1
-        s["stars"] = stars
-    except Exception as e:  # noqa: BLE001
+        s["stars"] = str(stars)
+    except Exception as e:
         print(f"[warn] REST stats failed: {e}", file=sys.stderr)
+
     if TOKEN:
         try:
-            q = ("query($l:String!){user(login:$l){contributionsCollection"
-                 "{totalCommitContributions}}}")
-            r = requests.post("https://api.github.com/graphql",
-                              json={"query": q, "variables": {"l": USER}},
-                              headers=_headers(), timeout=15).json()
-            s["commits"] = r["data"]["user"]["contributionsCollection"][
-                "totalCommitContributions"]
-        except Exception as e:  # noqa: BLE001
+            q = (
+                "query($l:String!){user(login:$l){contributionsCollection"
+                "{totalCommitContributions}}}"
+            )
+            r = requests.post(
+                "https://api.github.com/graphql",
+                json={"query": q, "variables": {"l": USER}},
+                headers=_headers(),
+                timeout=15,
+            ).json()
+            commits = r.get("data", {}).get("user", {}).get("contributionsCollection", {}).get("totalCommitContributions")
+            if commits is not None:
+                s["commits"] = f"{commits:,}"
+        except Exception as e:
             print(f"[warn] GraphQL stats failed: {e}", file=sys.stderr)
+
     return s
 
 
 # ----------------------------------------------------------------------------
-# Left panel: ASCII portrait or round photo
+# ASCII Portrait Generator
 # ----------------------------------------------------------------------------
-def ascii_rows(theme):
+def generate_ascii(cols=46, rows=32):
+    if not os.path.exists(PHOTO):
+        return []
     img = Image.open(PHOTO).convert("L")
-    img = ImageOps.autocontrast(img, cutoff=2)
-    img = ImageEnhance.Contrast(img).enhance(1.25)
-    w, h = img.size
-    cols = ASCII_COLS
-    rows = round(cols * h / w / CHAR_ASPECT)
-    if rows > ASCII_MAX_ROWS:
-        rows = ASCII_MAX_ROWS
-        cols = round(rows * CHAR_ASPECT * w / h)
-    img = img.resize((cols, rows), Image.LANCZOS)
-    ramp = RAMP if theme == "dark" else RAMP[::-1]
-    px = list(img.tobytes())
+    enh = ImageEnhance.Contrast(img).enhance(1.45)
+    inv = ImageOps.invert(enh)
+    resized = inv.resize((cols, rows), Image.Resampling.LANCZOS)
+    px = list(resized.tobytes())
+
+    ramp = " .:-=+*#%@"
     out = []
     for y in range(rows):
-        row = px[y * cols:(y + 1) * cols]
-        out.append("".join(ramp[v * (len(ramp) - 1) // 255] for v in row).rstrip())
-    return out, cols
-
-
-def left_ascii(theme, top):
-    lines, cols = ascii_rows(theme)
-    height = len(lines) * ASCII_LH
-    x = PAD + (LEFT_W - cols * ASCII_CW) / 2
-    svg = [f'<g clip-path="url(#asciiClip)">']
-    for i, ln in enumerate(lines):
-        y = top + (i + 1) * ASCII_LH
-        svg.append(
-            f'<text class="a r" x="{x:.1f}" y="{y:.1f}" xml:space="preserve" '
-            f'style="animation-delay:{0.2 + i * 0.035:.2f}s">{escape(ln)}</text>')
-    svg.append(f'<rect class="scan" x="{PAD}" y="{top}" width="{LEFT_W}" '
-               f'height="14" fill="url(#scanG)"/>')
-    svg.append("</g>")
-    clip = (f'<clipPath id="asciiClip"><rect x="{PAD}" y="{top}" '
-            f'width="{LEFT_W}" height="{height:.1f}"/></clipPath>')
-    return "\n".join(svg), clip, height
-
-
-def left_photo(theme, top):
-    size = 260
-    cx, cy = PAD + LEFT_W / 2, top + size / 2 + 10
-    img = Image.open(PHOTO).convert("RGB")
-    img = ImageOps.fit(img, (360, 360), Image.LANCZOS, centering=(0.5, 0.35))
-    buf = io.BytesIO()
-    img.save(buf, "JPEG", quality=84, optimize=True)
-    uri = "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
-    r = size / 2
-    svg = f"""
-<g class="r" style="animation-delay:.2s">
-  <circle cx="{cx}" cy="{cy}" r="{r + 14}" fill="none" stroke="url(#bord)" stroke-width="1.5" stroke-dasharray="3 9" opacity=".9">
-    <animateTransform attributeName="transform" type="rotate" from="0 {cx} {cy}" to="360 {cx} {cy}" dur="26s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="{cx}" cy="{cy}" r="{r + 6}" fill="none" stroke="url(#bord)" stroke-width="2.5">
-    <animate attributeName="opacity" values=".35;1;.35" dur="4s" repeatCount="indefinite"/>
-  </circle>
-  <image href="{uri}" x="{cx - r}" y="{cy - r}" width="{size}" height="{size}" clip-path="url(#avatarClip)" preserveAspectRatio="xMidYMid slice"/>
-</g>"""
-    clip = f'<clipPath id="avatarClip"><circle cx="{cx}" cy="{cy}" r="{r}"/></clipPath>'
-    return svg, clip, size + 40
+        row = px[y * cols : (y + 1) * cols]
+        line = "".join(ramp[v * (len(ramp) - 1) // 255] if v > 28 else " " for v in row)
+        out.append(line.rstrip())
+    return out
 
 
 # ----------------------------------------------------------------------------
-# Right panel
+# SVG Builder
 # ----------------------------------------------------------------------------
-def right_panel(t, stats, y0):
-    parts, y, n = [], y0, 0
+def build_card(theme_name, stats):
+    t = THEMES[theme_name]
+    ascii_lines = generate_ascii(cols=46, rows=32)
 
-    def d():
-        return f"{1.3 + n * 0.11:.2f}s"
+    CARD_W = 960
+    CARD_H = 512
+    PAD_X = 26
+    PAD_Y = 26
+    LINE_H = 19
+    FONT = "ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace"
 
-    # typed command
-    cmd_user, cmd_rest = f"{HANDLE}:~$ ", "neofetch"
-    total = len(cmd_user + cmd_rest)
-    steps = ";".join(f"{k * CW:.1f}" for k in range(total + 1))
-    parts.append(f'<clipPath id="typ"><rect x="{RIGHT_X}" y="{y - 14}" height="22" width="0">'
-                 f'<animate attributeName="width" values="{steps}" dur="1.0s" begin="0.3s" '
-                 f'calcMode="discrete" fill="freeze"/></rect></clipPath>')
-    parts.append(f'<text class="t" x="{RIGHT_X}" y="{y}" clip-path="url(#typ)">'
-                 f'<tspan fill="{t["key"]}">{escape(cmd_user)}</tspan>'
-                 f'<tspan fill="{t["accent"]}">{cmd_rest}</tspan></text>')
-    parts.append(f'<rect class="cur" x="{RIGHT_X + total * CW + 2:.1f}" y="{y - 11}" '
-                 f'width="7" height="14" fill="{t["accent"]}"/>')
-    y += 34
+    ASCII_CW = 5.75
+    ASCII_LH = 14.2
+    ASCII_FS = 10
+    ascii_w = 46 * ASCII_CW + 18
 
-    # name + rule
-    parts.append(f'<text class="t r" x="{RIGHT_X}" y="{y}" font-size="19" font-weight="700" '
-                 f'fill="url(#bord)" style="animation-delay:{d()}">{escape(NAME)}</text>')
-    n += 1
-    y += 12
-    parts.append(f'<line class="draw" x1="{RIGHT_X}" y1="{y}" x2="{W - PAD}" y2="{y}" '
-                 f'stroke="url(#bord)" stroke-width="1.5" style="animation-delay:{d()}"/>')
-    y += 10
+    RIGHT_X = PAD_X + ascii_w + 14
+    TOTAL_CHARS = 78
+    VAL_COL = 30
 
-    for item in INFO:
-        n += 1
-        if item[0] == "head":
-            y += 30
-            label = f"─ {item[1]} "
-            label += "─" * max(2, int((W - PAD - RIGHT_X) / CW) - len(label))
-            parts.append(f'<text class="t r" x="{RIGHT_X}" y="{y}" fill="{t["accent"]}" '
-                         f'font-weight="700" xml:space="preserve" '
-                         f'style="animation-delay:{d()}">{escape(label)}</text>')
+    items = [
+        ("header", HANDLE),
+        ("kv", "OS", "Linux (Ubuntu), Windows"),
+        ("kv", "Host", COMPANY),
+        ("kv", "Kernel", "Full-Stack Web Developer"),
+        ("kv", "Uptime", "4+ years active development"),
+        ("kv", "IDE", "VS Code, PyCharm"),
+        ("blank",),
+        ("kv", "Languages.Programming", "TypeScript, Python, JavaScript"),
+        ("kv", "Languages.Frameworks", "Next.js, Django, FastAPI, React"),
+        ("kv", "Languages.Real", "Bengali (Native), English (Fluent)"),
+        ("blank",),
+        ("kv", "Stack.Databases", "PostgreSQL, SQLite, Redis"),
+        ("kv", "Stack.DevOps", "Docker, Nginx, Linux, VPS"),
+        ("blank",),
+        ("section", "Contact"),
+        ("kv", "Email.Personal", "moynul2k3@gmail.com"),
+        ("kv", "Email.Work", "quantaplusplus@gmail.com"),
+        ("kv", "Website", "moynul.com"),
+        ("kv", "LinkedIn", "linkedin.com/in/moynul2k3"),
+        ("kv", "GitHub", "github.com/moynul2k3"),
+        ("blank",),
+        ("section", "GitHub Stats"),
+        ("stats2", ("Repos", stats["repos"]), ("Stars", stats["stars"])),
+        ("stats2", ("Commits (1y)", stats["commits"]), ("Followers", stats["followers"])),
+    ]
+
+    ascii_svg = []
+    ascii_start_y = PAD_Y + 14
+    for i, line in enumerate(ascii_lines):
+        y = ascii_start_y + i * ASCII_LH
+        if line.strip():
+            ascii_svg.append(
+                f'<text class="ascii r" x="{PAD_X}" y="{y:.1f}" xml:space="preserve" '
+                f'style="animation-delay:{0.05 + i * 0.015:.2f}s">{escape(line)}</text>'
+            )
+
+    right_svg = []
+    cur_y = PAD_Y + 14
+    anim_idx = 0
+
+    for item in items:
+        anim_delay = f"{0.12 + anim_idx * 0.02:.2f}s"
+        anim_idx += 1
+
+        if item[0] == "header":
+            user_text = item[1]
+            dashes_count = max(4, TOTAL_CHARS - len(user_text) - 1)
+            dashes = "-" * dashes_count
+            right_svg.append(
+                f'<text class="r text" x="{RIGHT_X}" y="{cur_y}" xml:space="preserve" style="animation-delay:{anim_delay}">'
+                f'<tspan fill="{t["user"]}" font-weight="600">{escape(user_text)}</tspan> '
+                f'<tspan fill="{t["dashes"]}">{dashes}</tspan></text>'
+            )
+        elif item[0] == "section":
+            sec_text = f"- {item[1]} "
+            dashes_count = max(4, TOTAL_CHARS - len(sec_text))
+            dashes = "-" * dashes_count
+            right_svg.append(
+                f'<text class="r text" x="{RIGHT_X}" y="{cur_y}" xml:space="preserve" style="animation-delay:{anim_delay}">'
+                f'<tspan fill="{t["sec_title"]}" font-weight="600">{escape(sec_text)}</tspan>'
+                f'<tspan fill="{t["dashes"]}">{dashes}</tspan></text>'
+            )
         elif item[0] == "kv":
-            y += 21
-            key = item[1]
-            val = item[2].format(**stats)
-            kx = RIGHT_X + 4
-            vx = RIGHT_X + 150
-            lead_x1 = kx + len(key) * CW + 8
-            parts.append(
-                f'<g class="r" style="animation-delay:{d()}">'
-                f'<text class="t" x="{kx}" y="{y}" fill="{t["key"]}" font-weight="600">{escape(key)}</text>'
-                f'<line x1="{lead_x1:.1f}" y1="{y - 4}" x2="{vx - 10}" y2="{y - 4}" '
-                f'stroke="{t["dots"]}" stroke-width="1.5" stroke-dasharray="1 5" stroke-linecap="round"/>'
-                f'<text class="t" x="{vx}" y="{y}" fill="{t["text"]}">{escape(val)}</text></g>')
-        else:
-            y += 12
-    return "\n".join(parts), y - y0 + 10
+            k, v = item[1], item[2]
+            k_part = f". {k}: "
+            dots_count = max(2, VAL_COL - len(k_part))
+            dots = "." * dots_count
+            right_svg.append(
+                f'<text class="r text" x="{RIGHT_X}" y="{cur_y}" xml:space="preserve" style="animation-delay:{anim_delay}">'
+                f'<tspan fill="{t["dot_prefix"]}">. </tspan>'
+                f'<tspan fill="{t["key"]}">{escape(k)}: </tspan>'
+                f'<tspan fill="{t["dots"]}">{dots} </tspan>'
+                f'<tspan fill="{t["val"]}">{escape(v)}</tspan></text>'
+            )
+        elif item[0] == "stats2":
+            (k1, v1), (k2, v2) = item[1], item[2]
+            COL1_W = 26
+            k1_part = f". {k1}: "
+            dots1_count = max(2, COL1_W - len(k1_part) - len(v1) - 2)
+            dots1 = "." * dots1_count
 
+            COL2_W = 21
+            k2_part = f"{k2}: "
+            dots2_count = max(2, COL2_W - len(k2_part) - len(v2) - 1)
+            dots2 = "." * dots2_count
 
-# ----------------------------------------------------------------------------
-# Assemble
-# ----------------------------------------------------------------------------
-def build(theme, stats):
-    t = THEMES[theme]
-    content_top = BAR_H + 30
-    right_svg, right_h = right_panel(t, stats, content_top + 14)
-    if MODE == "photo":
-        probe_h = 300
-    else:
-        probe_h = len(ascii_rows(theme)[0]) * ASCII_LH
-    content_h = max(right_h + 20, probe_h)
-    H = int(content_top + content_h + 34)
-    left_top = content_top + (content_h - probe_h) / 2
-    left_svg, left_clip, left_h = (left_photo if MODE == "photo" else left_ascii)(theme, left_top)
-    scan_travel = int(left_h)
+            right_svg.append(
+                f'<text class="r text" x="{RIGHT_X}" y="{cur_y}" xml:space="preserve" style="animation-delay:{anim_delay}">'
+                f'<tspan fill="{t["dot_prefix"]}">. </tspan>'
+                f'<tspan fill="{t["key"]}">{escape(k1)}: </tspan>'
+                f'<tspan fill="{t["dots"]}">{dots1} </tspan>'
+                f'<tspan fill="{t["stats_val"]}" font-weight="600">{escape(v1)} </tspan>'
+                f'<tspan fill="{t["pipe"]}">| </tspan>'
+                f'<tspan fill="{t["key"]}">{escape(k2)}: </tspan>'
+                f'<tspan fill="{t["dots"]}">{dots2} </tspan>'
+                f'<tspan fill="{t["stats_val"]}" font-weight="600">{escape(v2)}</tspan></text>'
+            )
+        elif item[0] == "blank":
+            pass
 
-    css = """
-.t{font:13px __FONT__}
-.a{font:__AFS__px __FONT__;fill:url(#ag)}
-.r{opacity:0;animation:in .55s ease-out forwards}
-@keyframes in{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
-.draw{stroke-dasharray:__DW__;stroke-dashoffset:__DW__;animation:dr 1.1s ease-out forwards}
-@keyframes dr{to{stroke-dashoffset:0}}
-.cur{opacity:0;animation:bl 1.05s steps(1) 1.4s infinite}
-@keyframes bl{0%,100%{opacity:1}50%{opacity:0}}
-.scan{animation:sc 5s linear 1.6s infinite;opacity:0}
-@keyframes sc{0%{transform:translateY(0);opacity:0}8%{opacity:.55}92%{opacity:.55}100%{transform:translateY(__ST__px);opacity:0}}
-.dot{animation:pu 3s ease-in-out infinite}
-@keyframes pu{0%,100%{opacity:1}50%{opacity:.55}}
-""".replace("__FONT__", FONT).replace("__AFS__", str(ASCII_FS)) \
-   .replace("__DW__", str(W)).replace("__ST__", str(scan_travel))
+        cur_y += LINE_H
 
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="{escape(NAME)} - GitHub profile card">
+    css = f"""
+.text {{ font: 12.5px {FONT}; }}
+.ascii {{ font: {ASCII_FS}px {FONT}; fill: {t["ascii"]}; }}
+.r {{ opacity: 0; animation: fadeIn 0.35s ease-out forwards; }}
+@keyframes fadeIn {{ from {{ opacity: 0; transform: translateY(3px); }} to {{ opacity: 1; transform: translateY(0); }} }}
+"""
+
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{CARD_W}" height="{CARD_H}" viewBox="0 0 {CARD_W} {CARD_H}" role="img" aria-label="{escape(NAME)} - GitHub profile card">
 <title>{escape(NAME)} - GitHub profile card</title>
 <defs>
-<style>{css}</style>
-<linearGradient id="bord" x1="0" y1="0" x2="1" y2="1">
-  <stop offset="0" stop-color="{t['b1']}"><animate attributeName="stop-color" values="{t['b1']};{t['b2']};{t['b1']}" dur="7s" repeatCount="indefinite"/></stop>
-  <stop offset="1" stop-color="{t['b2']}"><animate attributeName="stop-color" values="{t['b2']};{t['b1']};{t['b2']}" dur="7s" repeatCount="indefinite"/></stop>
-</linearGradient>
-<linearGradient id="ag" gradientUnits="userSpaceOnUse" x1="0" y1="{left_top:.0f}" x2="0" y2="{left_top + left_h:.0f}">
-  <stop offset="0" stop-color="{t['a1']}"/><stop offset="1" stop-color="{t['a2']}"/>
-</linearGradient>
-<linearGradient id="scanG" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="{t['a1']}" stop-opacity="0"/>
-  <stop offset=".5" stop-color="{t['a1']}" stop-opacity=".9"/>
-  <stop offset="1" stop-color="{t['a1']}" stop-opacity="0"/>
-</linearGradient>
-<radialGradient id="glow1"><stop offset="0" stop-color="{t['b1']}" stop-opacity=".22"/><stop offset="1" stop-color="{t['b1']}" stop-opacity="0"/></radialGradient>
-<radialGradient id="glow2"><stop offset="0" stop-color="{t['b2']}" stop-opacity=".2"/><stop offset="1" stop-color="{t['b2']}" stop-opacity="0"/></radialGradient>
-<clipPath id="card"><rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="16"/></clipPath>
-{left_clip}
+  <style>{css}</style>
+  <clipPath id="cardClip">
+    <rect x="0" y="0" width="{CARD_W}" height="{CARD_H}" rx="14" />
+  </clipPath>
 </defs>
 
-<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="16" fill="{t['bg']}"/>
-<g clip-path="url(#card)">
-  <circle cx="120" cy="120" r="260" fill="url(#glow1)">
-    <animate attributeName="cx" values="120;220;120" dur="14s" repeatCount="indefinite"/>
-    <animate attributeName="cy" values="120;200;120" dur="14s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="{W - 120}" cy="{H - 80}" r="280" fill="url(#glow2)">
-    <animate attributeName="cx" values="{W - 120};{W - 260};{W - 120}" dur="16s" repeatCount="indefinite"/>
-  </circle>
-  <rect x="0" y="0" width="{W}" height="{BAR_H}" fill="{t['bar']}"/>
-  <line x1="0" y1="{BAR_H}" x2="{W}" y2="{BAR_H}" stroke="{t['dots']}" stroke-opacity=".5"/>
-</g>
-<circle class="dot" cx="24" cy="{BAR_H / 2}" r="6" fill="#ff5f56"/>
-<circle class="dot" cx="46" cy="{BAR_H / 2}" r="6" fill="#ffbd2e" style="animation-delay:.4s"/>
-<circle class="dot" cx="68" cy="{BAR_H / 2}" r="6" fill="#27c93f" style="animation-delay:.8s"/>
-<text class="t" x="{W / 2}" y="{BAR_H / 2 + 4.5}" text-anchor="middle" fill="{t['muted']}" font-size="12">{escape(USER)} - zsh - {W}x{H}</text>
-<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="16" fill="none" stroke="url(#bord)" stroke-width="1.6"/>
+<rect x="0" y="0" width="{CARD_W}" height="{CARD_H}" rx="14" fill="{t['bg']}" stroke="{t['border']}" stroke-width="1.5" />
 
-{left_svg}
-{right_svg}
+<g clip-path="url(#cardClip)">
+{chr(10).join(ascii_svg)}
+{chr(10).join(right_svg)}
+</g>
 </svg>
 """
 
 
 def main():
-    if not os.path.exists(PHOTO):
-        sys.exit(f"Missing {PHOTO}. Put your portrait there (or set PHOTO=path).")
     os.makedirs(OUTDIR, exist_ok=True)
     stats = fetch_stats()
     for theme in THEMES:
         path = os.path.join(OUTDIR, f"{theme}_mode.svg")
+        content = build_card(theme, stats)
         with open(path, "w", encoding="utf-8") as f:
-            f.write(build(theme, stats))
+            f.write(content)
         print(f"wrote {path}")
 
 

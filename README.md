@@ -8,7 +8,7 @@
 
 <p>
   <a href="https://moynul.com"><img src="https://img.shields.io/badge/Portfolio-moynul.com-111827?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio" /></a>
-  <a href="https://bikoallinone.com"><img src="https://img.shields.io/badge/Company-bikoallinone.com-7C3AED?style=for-the-badge&logo=rocket&logoColor=white" alt="Company" /></a>
+  <a href="https://github.com/Quanta-Plus-Plus"><img src="https://img.shields.io/badge/Company-Quanta_Plus_Plus-7C3AED?style=for-the-badge&logo=rocket&logoColor=white" alt="Company" /></a>
   <a href="https://linkedin.com/in/moynul2k3"><img src="https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:moynul2k3@gmail.com"><img src="https://img.shields.io/badge/Email-Contact_Me-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
 </p>
@@ -20,12 +20,15 @@
 <br />
 
 <!-- Animated neofetch-style profile card -->
-<a href="https://github.com/moynul2k3">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/dark_mode.svg">
-    <img alt="Md. Moynul Islam - GitHub profile card" src="./assets/light_mode.svg">
-  </picture>
-</a>
+<div align="center">
+  <a href="https://github.com/moynul2k3">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/moynul2k3/moynul2k3/main/assets/dark_mode.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/moynul2k3/moynul2k3/main/assets/light_mode.svg">
+      <img alt="Md. Moynul Islam - GitHub profile card" src="https://raw.githubusercontent.com/moynul2k3/moynul2k3/main/assets/dark_mode.svg" width="100%">
+    </picture>
+  </a>
+</div>
 
 <br />
 
@@ -98,9 +101,9 @@ I'm a results-driven full-stack developer who builds **scalable, secure, and hig
 
 <div align="center">
 
-| 🌐 Company Website | 💼 Personal Portfolio | 📄 Resume |
+| 🏢 Company | 💼 Personal Portfolio | 📄 Resume |
 |:---:|:---:|:---:|
-| [bikoallinone.com](https://bikoallinone.com) | [moynul.com](https://moynul.com) | [Download PDF](https://drive.google.com/file/d/1CduojanybghWnTHREb41iz_7XKjMCXLc/view) |
+| [Quanta Plus Plus](https://github.com/Quanta-Plus-Plus) | [moynul.com](https://moynul.com) | [Download PDF](https://drive.google.com/file/d/1CduojanybghWnTHREb41iz_7XKjMCXLc/view) |
 
 </div>
 
@@ -109,8 +112,7 @@ I'm a results-driven full-stack developer who builds **scalable, secure, and hig
 ## 📊 GitHub Analytics
 
 <div align="center">
-  <img src="./profile-summary-card-output/radical/3-stats.svg" alt="GitHub stats" width="48%" />
-  <img src="./profile-summary-card-output/radical/2-most-commit-language.svg" alt="Most used languages" width="48%" />
+  <img src="https://streak-stats.demolab.com/?user=moynul2k3&theme=radical&hide_border=true" alt="GitHub Streak" />
 </div>
 
 <div align="center">
