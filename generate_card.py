@@ -3,6 +3,7 @@
 Generate terminal-style neofetch GitHub profile cards (dark + light).
 Outputs: assets/dark_mode.svg, assets/light_mode.svg
 """
+import utils.session
 import base64
 import os
 import shutil
